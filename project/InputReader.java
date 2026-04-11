@@ -18,13 +18,14 @@ public class InputReader {
         String line;
 
         while ((line = reader.readLine()) != null) {
+            if (line.trim().isEmpty()) continue;
 
-            //Title,Id
+            // LINE 1: title,id
             String[] parts = line.split(",");
             String title = parts[0].trim();
             String id = parts[1].trim();
 
-            // Validate movie name
+            // Validate title
             String titleError = validator.validateMovieTitle(title);
             if (titleError != null) {
                 reader.close();
@@ -38,7 +39,7 @@ public class InputReader {
                 throw new Exception(idError);
             }
 
-            // Category1,Category2,...
+            // LINE 2: category1,category2,...
             String categoriesLine = reader.readLine();
             List<String> categories = new ArrayList<>(
                 Arrays.asList(categoriesLine.split(","))
@@ -62,18 +63,27 @@ public class InputReader {
         String line;
 
         while ((line = reader.readLine()) != null) {
+            if (line.trim().isEmpty()) continue;
 
-            // Username, UserId
+            // LINE 1: username,userId
             String[] parts = line.split(",");
-            String username = parts[0].trim();
+
+            // ─────────────────────────────────────────
+            // FIX: Keep original username WITHOUT trim
+            // so leading space is preserved for validation
+            // ─────────────────────────────────────────
+            String username = parts[0]; // ← no trim here
             String userId = parts[1].trim();
 
-            // Validate username
+            // Validate username BEFORE trimming
             String usernameError = validator.validateUsername(username);
             if (usernameError != null) {
                 reader.close();
                 throw new Exception(usernameError);
             }
+
+            // Trim AFTER validation passes
+            username = username.trim();
 
             // Validate user ID
             String userIdError = validator.validateUserId(userId);
@@ -82,7 +92,7 @@ public class InputReader {
                 throw new Exception(userIdError);
             }
 
-            // likedCategory1,likedCategory2,...
+            // LINE 2: likedCategory1,likedCategory2,...
             String categoriesLine = reader.readLine();
             List<String> likedCategories = new ArrayList<>(
                 Arrays.asList(categoriesLine.split(","))
