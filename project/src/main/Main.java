@@ -1,12 +1,18 @@
+package main;
+
+import constructors.Movie;
+import constructors.User;
+import inputreader.InputReader;
 import java.util.List;
+import recommendation.RecommendationEngine;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        String moviesFile = "movies.txt";
-        String usersFile = "users.txt";
-        String outputFile = "recommendations.txt";
+        String moviesFile = "resources/movies.txt";
+        String usersFile = "resources/users.txt";
+        String outputFile = "resources/recommendations.txt";
 
         InputReader reader = new InputReader(); 
         RecommendationEngine engine = new RecommendationEngine();
