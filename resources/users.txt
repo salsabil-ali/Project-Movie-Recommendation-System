@@ -1,6 +1,4 @@
-Nour Khaled, 12345678A
-Action, Drama
-Salsabil Ali, 987654321
-Crime
-Nouran Awad, 98712312r
-Drama, Crime
+Ahmed Ali,123456789
+action,drama
+Sara Hassan,987654321
+horror
