@@ -5,17 +5,18 @@ import constructors.User;
 import inputreader.InputReader;
 import java.util.List;
 import recommendation.RecommendationEngine;
-
+import OutputWriter.OutputWriter;
 public class Main {
 
     public static void main(String[] args) {
 
         String moviesFile = "resources/movies.txt";
-        String usersFile = "resources/users.txt";
+        String usersFile  = "resources/users.txt";
         String outputFile = "resources/recommendations.txt";
 
-        InputReader reader = new InputReader(); 
+        InputReader        reader = new InputReader();
         RecommendationEngine engine = new RecommendationEngine();
+        OutputWriter       writer = new OutputWriter();
 
         try {
 
@@ -31,16 +32,19 @@ public class Main {
 
             // Generating recommendations
             System.out.println("Generating recommendations...");
-            engine.generateRecommendations(movies, users, outputFile);
+            String content = engine.generateRecommendations(movies, users);
+
+            // Writing output to file
+            writer.writeRecommendations(content, outputFile);
             System.out.println("Done! Check " + outputFile);
 
         } catch (Exception e) {
 
             System.out.println("Error found: " + e.getMessage());
             try {
-                engine.writeError(e.getMessage(), outputFile);
+                writer.writeError(e.getMessage(), outputFile);
             } catch (Exception ex) {
-                System.out.println("Could not write error to file: " 
+                System.out.println("Could not write error to file: "
                                    + ex.getMessage());
             }
         }
