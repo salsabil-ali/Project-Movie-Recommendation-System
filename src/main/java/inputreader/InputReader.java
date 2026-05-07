@@ -8,14 +8,15 @@ package inputreader;
  * @author Salsbil
  */
 
-import constructors.Movie;
-import constructors.User;
-import validator.Validator;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
+import constructors.Movie;
+import constructors.User;
+import validator.Validator;
 
 public class InputReader {
 
