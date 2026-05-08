@@ -1,6 +1,6 @@
 package wbt.outputwritertests;
 
-import OutputWriter.OutputWriter;
+import outputwriter.OutputWriter;
 import org.junit.jupiter.api.*;
 import java.io.*;
 import java.nio.file.*;
