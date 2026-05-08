@@ -1,10 +1,17 @@
 package wbt.outputwritertests;
 
-import OutputWriter.OutputWriter;
-import org.junit.jupiter.api.*;
-import java.io.*;
-import java.nio.file.*;
-import static org.junit.jupiter.api.Assertions.*;
+import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Path;
+
+import org.junit.jupiter.api.AfterEach;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import outputwriter.OutputWriter;
 
 public class OutputWriterTest {
 
