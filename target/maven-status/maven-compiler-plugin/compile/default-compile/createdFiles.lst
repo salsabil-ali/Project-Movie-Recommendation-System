@@ -1,7 +1,5 @@
+outputwriter\OutputWriter.class
 constructors\User.class
-OutputWriter\OutputWriter.class
 validator\Validator.class
-recommendation\RecommendationEngine.class
 constructors\Movie.class
 inputreader\InputReader.class
-main\Main.class

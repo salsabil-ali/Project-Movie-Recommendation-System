@@ -28,11 +28,9 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.release>24</maven.compiler.release>
-        <exec.mainClass>com.salsabil.main.Main</exec.mainClass>
+        <exec.mainClass>main.Main</exec.mainClass>
     </properties>
     <build>
-        <sourceDirectory>project/src</sourceDirectory>
-        <testSourceDirectory>src/test/java</testSourceDirectory>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
