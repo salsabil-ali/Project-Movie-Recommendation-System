@@ -5,8 +5,7 @@ import constructors.User;
 import inputreader.InputReader;
 import java.util.List;
 import recommendation.RecommendationEngine;
-import OutputWriter.OutputWriter;
-
+import outputwriter.OutputWriter;
 public class Main {
 
     public static void main(String[] args) {
@@ -33,7 +32,7 @@ public class Main {
 
             // Generating recommendations
             System.out.println("Generating recommendations...");
-            String content = engine.generateRecommendations(movies, users, outputFile);
+            engine.generateRecommendations(movies, users, outputFile);
 
             System.out.println("Done! Check " + outputFile);
 

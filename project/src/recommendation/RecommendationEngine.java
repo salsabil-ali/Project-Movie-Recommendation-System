@@ -1,19 +1,22 @@
 package recommendation;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.List;
+
 import constructors.Movie;
 import constructors.User;
-import OutputWriter.OutputWriter;
-import java.util.List;
 
 public class RecommendationEngine {
 
-    private OutputWriter outputWriter = new OutputWriter();
+    public void writeError(String message, String outputPath) throws IOException {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(outputPath))) {
+            writer.write(message);
+        }
+    }
 
-    // ─────────────────────────────────────────
-    // GENERATE RECOMMENDATIONS
-    // ─────────────────────────────────────────
-    public String generateRecommendations(List<Movie> movies, List<User> users, String outputPath) throws Exception {
-
+    public void generateRecommendations(List<Movie> movies, List<User> users, String outputPath) throws IOException {
         StringBuilder output = new StringBuilder();
 
         for (User user : users) {
@@ -39,20 +42,15 @@ public class RecommendationEngine {
                     }
                 }
 
-                if (foundAny) output.append(line.toString()).append("\n");
+                if (foundAny) {
+                    output.append(line.toString()).append("\n");
+                }
             }
             output.append("\n");
         }
 
-        String result = output.toString();
-        outputWriter.writeRecommendations(result, outputPath);
-        return result;
-    }
-
-    // ─────────────────────────────────────────
-    // WRITE ERROR
-    // ─────────────────────────────────────────
-    public void writeError(String errorMessage, String outputPath) throws Exception {
-        outputWriter.writeError(errorMessage, outputPath);
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(outputPath))) {
+            writer.write(output.toString());
+        }
     }
 }
