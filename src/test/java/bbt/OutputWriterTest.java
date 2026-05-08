@@ -1,10 +1,12 @@
 package bbt;
 
-import OutputWriter;
-import org.junit.jupiter.api.Test;
 import java.io.File;
 import java.nio.file.Files;
-import static org.junit.jupiter.api.Assertions.*;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.junit.jupiter.api.Test;
+
+import outputwriter.OutputWriter;
 
 class OutputWriterTest {
 

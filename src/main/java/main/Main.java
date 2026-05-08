@@ -1,11 +1,12 @@
 package main;
 
+import java.util.List;
+
 import constructors.Movie;
 import constructors.User;
 import inputreader.InputReader;
-import java.util.List;
+import outputwriter.OutputWriter;
 import recommendation.RecommendationEngine;
-import OutputWriter.OutputWriter; // Matches your package name
 
 public class Main {
 
