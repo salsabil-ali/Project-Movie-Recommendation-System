@@ -1,5 +1,6 @@
-package recommendation;
+package bbt;
 
+import recommendation.RecommendationEngine;
 import constructors.Movie;
 import constructors.User;
 import org.junit.jupiter.api.Test;

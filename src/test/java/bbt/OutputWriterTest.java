@@ -1,5 +1,6 @@
-package OutputWriter;
+package bbt;
 
+import OutputWriter;
 import org.junit.jupiter.api.Test;
 import java.io.File;
 import java.nio.file.Files;
