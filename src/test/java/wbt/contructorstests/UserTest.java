@@ -2,6 +2,7 @@ package wbt.contructorstests;
 
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 
 import constructors.User;
@@ -13,9 +14,9 @@ public class UserTest {
         // Statement coverage: testing constructor creation and getter methods
         List<String> likedCategories = List.of("Action", "Drama");
         User u = new User("Sara Khaled", "12345678A", likedCategories);
-        u.getUsername();
-        u.getUserId();
-        u.getLikedCategories();
+        assertEquals("Sara Khaled", u.getUsername());
+        assertEquals("12345678A", u.getUserId());
+        assertEquals(likedCategories, u.getLikedCategories());
     }
 
 }

@@ -1,56 +1,46 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- */
-
 package main;
 
-/**
- *
- * @author Salsbil
- */
 import java.util.List;
 
 import constructors.Movie;
 import constructors.User;
 import inputreader.InputReader;
+import outputwriter.OutputWriter;
 import recommendation.RecommendationEngine;
 
 public class Main {
 
     public static void main(String[] args) {
+        String moviesFile = "src/main/java/resources/movies.txt";
+        String usersFile  = "src/main/java/resources/users.txt";
+        String outputFile = "src/main/java/resources/recommendations.txt";
 
-        String moviesFile = "movies.txt";
-        String usersFile = "users.txt";
-        String outputFile = "recommendations.txt";
-
-        InputReader reader = new InputReader(); 
+        InputReader reader = new InputReader();
         RecommendationEngine engine = new RecommendationEngine();
+        OutputWriter writer = new OutputWriter();
 
         try {
 
-            // Reading movies
             System.out.println("Reading movies...");
             List<Movie> movies = reader.readMovies(moviesFile);
-            System.out.println("Movies loaded: " + movies.size());
 
-            // Reading users
             System.out.println("Reading users...");
             List<User> users = reader.readUsers(usersFile);
-            System.out.println("Users loaded: " + users.size());
 
-            // Generating recommendations
             System.out.println("Generating recommendations...");
-            engine.generateRecommendations(movies, users, outputFile);
-            System.out.println("Done! Check " + outputFile);
+            String content = engine.generateRecommendations(movies, users);
+
+            writer.writeRecommendations(content, outputFile);
+            System.out.println("Success! Results saved to: " + outputFile);
 
         } catch (Exception e) {
 
-            System.out.println("Error found: " + e.getMessage());
+            System.err.println("Process failed: " + e.getMessage());
             try {
-                engine.writeError(e.getMessage(), outputFile);
+                writer.writeError("Error during execution: " + e.getMessage(), outputFile);
+                System.out.println("Error details written to: " + outputFile);
             } catch (Exception ex) {
-                System.out.println("Could not write error to file: " 
-                                   + ex.getMessage());
+                System.err.println("Critical Failure: Could not write error log. " + ex.getMessage());
             }
         }
     }
