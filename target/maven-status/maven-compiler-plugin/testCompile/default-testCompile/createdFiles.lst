@@ -1,7 +1,7 @@
 wbt\inputreadertests\InputReaderTest.class
 wbt\contructorstests\UserTest.class
 bbt\OutputWriterTest.class
-OutputWriterTest.class
 wbt\contructorstests\MovieTest.class
 bbt\InputReaderTest.class
+bbt\ValidatorTest.class
 wbt\validatortests\ValidatorTest.class
