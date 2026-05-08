@@ -6,6 +6,7 @@ import inputreader.InputReader;
 import java.util.List;
 import recommendation.RecommendationEngine;
 import OutputWriter.OutputWriter;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -14,9 +15,9 @@ public class Main {
         String usersFile  = "resources/users.txt";
         String outputFile = "resources/recommendations.txt";
 
-        InputReader        reader = new InputReader();
+        InputReader          reader = new InputReader();
         RecommendationEngine engine = new RecommendationEngine();
-        OutputWriter       writer = new OutputWriter();
+        OutputWriter         writer = new OutputWriter();
 
         try {
 
@@ -32,10 +33,8 @@ public class Main {
 
             // Generating recommendations
             System.out.println("Generating recommendations...");
-            String content = engine.generateRecommendations(movies, users);
+            String content = engine.generateRecommendations(movies, users, outputFile);
 
-            // Writing output to file
-            writer.writeRecommendations(content, outputFile);
             System.out.println("Done! Check " + outputFile);
 
         } catch (Exception e) {

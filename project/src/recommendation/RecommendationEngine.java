@@ -2,64 +2,57 @@ package recommendation;
 
 import constructors.Movie;
 import constructors.User;
+import OutputWriter.OutputWriter;
 import java.util.List;
 
 public class RecommendationEngine {
 
+    private OutputWriter outputWriter = new OutputWriter();
+
     // ─────────────────────────────────────────
-    // GENERATE RECOMMENDATIONS (returns content as String)
+    // GENERATE RECOMMENDATIONS
     // ─────────────────────────────────────────
-    public String generateRecommendations(List<Movie> movies, List<User> users) {
+    public String generateRecommendations(List<Movie> movies, List<User> users, String outputPath) throws Exception {
 
         StringBuilder output = new StringBuilder();
 
         for (User user : users) {
-
-            // LINE 1: "For User: username, userId"
             output.append("For User: ")
                   .append(user.getUsername())
                   .append(", ")
                   .append(user.getUserId())
                   .append("\n");
 
-            // For each category the user likes
             for (String likedCategory : user.getLikedCategories()) {
-
                 StringBuilder line = new StringBuilder();
                 line.append(likedCategory.trim()).append(":");
-
                 boolean foundAny = false;
 
-                // Find all movies that belong to this category
                 for (Movie movie : movies) {
                     for (String movieCategory : movie.getCategories()) {
-                        if (movieCategory.trim()
-                                .equalsIgnoreCase(likedCategory.trim())) {
-
-                            if (foundAny) {
-                                line.append(",");
-                            }
-
-                            line.append(" ")
-                                .append(movie.getId())
-                                .append("-")
-                                .append(movie.getTitle());
-
+                        if (movieCategory.trim().equalsIgnoreCase(likedCategory.trim())) {
+                            if (foundAny) line.append(",");
+                            line.append(" ").append(movie.getId()).append("-").append(movie.getTitle());
                             foundAny = true;
                             break;
                         }
                     }
                 }
 
-                // Only append the line if we found matching movies
-                if (foundAny) {
-                    output.append(line.toString()).append("\n");
-                }
+                if (foundAny) output.append(line.toString()).append("\n");
             }
-
-            output.append("\n"); // blank line between users
+            output.append("\n");
         }
 
-        return output.toString();
+        String result = output.toString();
+        outputWriter.writeRecommendations(result, outputPath);
+        return result;
+    }
+
+    // ─────────────────────────────────────────
+    // WRITE ERROR
+    // ─────────────────────────────────────────
+    public void writeError(String errorMessage, String outputPath) throws Exception {
+        outputWriter.writeError(errorMessage, outputPath);
     }
 }
