@@ -1,12 +1,15 @@
-package bbt;
-import recommendation.RecommendationEngine;
-import constructors.Movie;
-import constructors.User;
-import org.junit.jupiter.api.Test;
+package bbt.recommendationenginetests;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
-import static org.junit.jupiter.api.Assertions.*;
+
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import org.junit.jupiter.api.Test;
+
+import constructors.Movie;
+import constructors.User;
+import recommendation.RecommendationEngine;
 class RecommendationEngineTest {
     @Test
     void testGenerateRecommendations_ValidMatch() throws IOException {
