@@ -4,11 +4,15 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
+
 import constructors.Movie;
 import constructors.User;
 
 public class RecommendationEngine {
 
+    // ─────────────────────────────────────────
+    // GENERATE RECOMMENDATIONS (returns content as String)
+    // ─────────────────────────────────────────
     public void writeError(String message, String outputPath) throws IOException {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(outputPath))) {
             writer.write(message);
@@ -32,6 +36,7 @@ public class RecommendationEngine {
 
                 for (Movie movie : movies) {
                     for (String movieCategory : movie.getCategories()) {
+
                         if (movieCategory.trim().equalsIgnoreCase(likedCategory.trim())) {
                             if (foundAny) line.append(",");
                             line.append(" ").append(movie.getId()).append("-").append(movie.getTitle());
@@ -45,6 +50,7 @@ public class RecommendationEngine {
                     output.append(line.toString()).append("\n");
                 }
             }
+
             output.append("\n");
         }
 
