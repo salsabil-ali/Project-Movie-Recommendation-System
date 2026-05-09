@@ -1,9 +1,0 @@
-wbt\inputreadertests\InputReaderTest.class
-wbt\outputwritertests\OutputWriterTest.class
-wbt\contructorstests\UserTest.class
-wbt\recommendationtests\RecommendationTest.class
-bbt\OutputWriterTest.class
-wbt\contructorstests\MovieTest.class
-bbt\InputReaderTest.class
-bbt\ValidatorTest.class
-wbt\validatortests\ValidatorTest.class
